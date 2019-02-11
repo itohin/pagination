@@ -2,6 +2,7 @@
 
 use Doctrine\DBAL\Configuration;
 use Doctrine\DBAL\DriverManager;
+use App\Pagination\Builder;
 
 require 'vendor/autoload.php';
 
@@ -20,4 +21,5 @@ $connection = DriverManager::getConnection([
 $queryBuilder = $connection->createQueryBuilder();
 $queryBuilder->select('*')->from('users');
 
-dump($queryBuilder->execute()->fetchAll());
+$builder = new Builder($queryBuilder);
+$builder->paginate(5, 10);
