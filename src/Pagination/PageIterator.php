@@ -49,6 +49,26 @@ class PageIterator implements Iterator
     }
 
     /**
+     * @return bool
+     */
+    public function hasPrevious()
+    {
+        if ($this->meta->page <= 0) {
+            return false;
+        }
+
+        return $this->meta->page > 1;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasNext()
+    {
+        return $this->meta->page < $this->meta->lastPage;
+    }
+
+    /**
      * @return int|mixed
      */
     public function key ()
