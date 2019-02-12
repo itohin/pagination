@@ -2,6 +2,7 @@
 
 namespace App\Pagination;
 
+use App\Pagination\Renderers\PlainRenderer;
 
 class Results
 {
@@ -37,6 +38,6 @@ class Results
 
     public function render()
     {
-
+        return (new PlainRenderer($this->meta))->render();
     }
 }
