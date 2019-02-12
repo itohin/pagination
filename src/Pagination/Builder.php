@@ -2,7 +2,6 @@
 
 namespace App\Pagination;
 
-
 class Builder
 {
     /**
@@ -29,8 +28,6 @@ class Builder
 
         $total = $this->builder->execute()->rowCount();
 
-        dump($total);
-
         $result = $this->builder
             ->setFirstResult(
                 $this->getFirstIndex($page, $perPage)
@@ -38,6 +35,10 @@ class Builder
             ->setMaxResults($perPage)
             ->execute()
             ->fetchAll();
+
+        $meta = new Meta($page, $perPage, $total);
+
+        dump($meta->lastPage());
     }
 
     /**
