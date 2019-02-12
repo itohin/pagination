@@ -22,4 +22,6 @@ $queryBuilder = $connection->createQueryBuilder();
 $queryBuilder->select('*')->from('users');
 
 $builder = new Builder($queryBuilder);
-$builder->paginate($_GET['page'] ?? 1, 10);
+$users = $builder->paginate($_GET['page'] ?? 1, 10);
+
+$users->get();

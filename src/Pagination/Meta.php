@@ -64,4 +64,17 @@ class Meta
     {
         return (int) ceil($this->total() / $this->perPage());
     }
+
+    /**
+     * @param $property
+     * @return null
+     */
+    public function __get($property)
+    {
+        if (method_exists($this, $property)) {
+            return $this->{$property}();
+        }
+
+        return null;
+    }
 }

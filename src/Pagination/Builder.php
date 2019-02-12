@@ -36,9 +36,11 @@ class Builder
             ->execute()
             ->fetchAll();
 
-        $meta = new Meta($page, $perPage, $total);
+        return new Results(
+            $result,
+            new Meta($page, $perPage, $total)
+        );
 
-        dump($meta->lastPage());
     }
 
     /**
